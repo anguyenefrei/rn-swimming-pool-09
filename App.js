@@ -1,13 +1,58 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, StyleSheet, SafeAreaProvider } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
-export default function App() {
+
+const Accueil = () =>{
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Accueil </Text>
     </View>
+  );
+}
+
+const Menu = () => {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Menu </Text>
+    </View>
+  );
+}
+
+const Boissons = () => {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Boissons </Text>
+    </View>
+  );
+}
+
+const Dessert = () => {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Dessert </Text>
+    </View>
+  );
+}
+const Drawer = createDrawerNavigator();
+const MyDrawer= () => {
+  return (
+    <Drawer.Navigator>
+      <Drawer.Screen name="Accueil" component={Accueil} />
+      <Drawer.Screen name="Menu" component={Menu} />
+      <Drawer.Screen name="Boissons" component={Boissons} />
+      <Drawer.Screen name="Dessert" component={Dessert} />
+    </Drawer.Navigator>
+  );
+}
+export default function App() {
+  
+  return (
+    <NavigationContainer>
+      <MyDrawer />
+    </NavigationContainer>
+
   );
 }
 
@@ -18,4 +63,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  iconStyle: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignContent: 'center'
+  }
 });
